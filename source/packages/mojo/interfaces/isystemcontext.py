@@ -95,12 +95,12 @@ class ISystemContext(Protocol):
         """
         raise NotOverloadedError("ISystemContext.file_push must be overloaded by derived types")
 
-    def open_session(self, sysctx: Optional["ISystemContext"] = None, aspects: Optional[AspectsCmd] = None, **kwargs) -> "ISystemContext": # pylint: disable=arguments-differ
+    def open_session(self, basis_session: Optional["ISystemContext"] = None, aspects: Optional[AspectsCmd] = None, **kwargs) -> "ISystemContext": # pylint: disable=arguments-differ
         """
             Provides a mechanism to create a :class:`SshSession` object with derived settings.  This method allows various parameters for the session
             to be overridden.  This allows for the performing of a series of SSH operations under a particular set of shared settings and or credentials.
 
-            :param sysctx: An optional ISystemContext instance to use for creating a session.  This allows arbitrary re-use of sessions.
+            :param basis_session: An optional ISystemContext instance to use for creating a session.  This allows arbitrary re-use of sessions.
             :param aspects: The default run aspects to use for the operations performed by the session.
             :param kwargs: Other keyword args to allow flexible tuning of session constraints.
         """
